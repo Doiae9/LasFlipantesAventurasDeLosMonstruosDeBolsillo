@@ -4,10 +4,10 @@ public class Objeto {
 // cantidad - entero
 // nombre - String
 
-   private double costo;
-   private int cantidad;
-   private String nombre;
-    private String tipo;
+   protected double costo;
+   protected int cantidad;
+   protected String nombre;
+   protected String tipo;
 
     public double getCosto() {
         return costo;
