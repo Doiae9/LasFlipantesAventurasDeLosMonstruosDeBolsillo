@@ -6,6 +6,5 @@ public class Baya extends Objeto{
     //si es curacion 20 hp
     // si es fuerza
     //aumentar 20 ataque
-    //si es velocidad
-    //aumentar 20  velocidad
+
 }
