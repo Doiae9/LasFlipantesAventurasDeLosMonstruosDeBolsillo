@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-public class Objeto {
+public abstract class Objeto {
 //costo - double
 // cantidad - entero
 // nombre - String
@@ -57,5 +57,6 @@ public class Objeto {
                 ", tipo='" + tipo + '\'' +
                 '}';
     }
+    public abstract void usar();
 
 }

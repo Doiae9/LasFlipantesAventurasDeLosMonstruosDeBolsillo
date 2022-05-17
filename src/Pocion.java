@@ -25,6 +25,11 @@ public class Pocion extends Objeto {
     public void setDuracion(int duracion) {
         this.duracion = duracion;
     }
+
+    @Override
+    public void usar() {
+
+    }
 //usar
     //si es curacion 20 hp
     // si es fuerza

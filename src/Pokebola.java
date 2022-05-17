@@ -6,6 +6,11 @@ public class Pokebola extends Objeto{
         super(costo, cantidad, nombre, tipo);
         this.efectividad = efectividad;
     }
+
+    @Override
+    public void usar() {
+
+    }
     //atrapar/usar retorna true/ false
 
     //revisar el tipo de pokemon

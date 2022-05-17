@@ -26,6 +26,11 @@ public class Baya extends Objeto{
         this.duracion = duracion;
     }
 
+    @Override
+    public void usar() {
+
+    }
+
     //usar
     //si es curacion 20 hp
     // si es fuerza
