@@ -70,28 +70,37 @@ public class Tienda {
     }
     //comprar
     //vender
-    public boolean usuariovender(Objeto objeto, int cantidad, int indiceObjeto){
+    public boolean usuariovender(Objeto objeto, int cantidad, int indiceObjeto) {
         //logica inversa de compra
-       //No comprar baya if(Objeto.get(Baya).){}
+        //No comprar baya if(Objeto.get(Baya).){}
 
-        if(indiceObjeto>objetosDisponibles.size()){
-            System.out.println("Error no existe ese objeto");
+        if (objeto.getClass().toString().equals("class Baya")) {
+            System.out.println("No acepto bayas");
             return false;
-        //No podremos comprarle al usuario si quiere vendernos una baya
-        //
-        System.out.println(objeto.getClass());
+        } else {
+            for(Objeto elemento: objetosDisponibles){
+                if(elemento.nombre.equals(objeto.nombre)){
+                    elemento.cantidad+= cantidad;
+                    System.out.println("Comprado objeto existente");
+                    return true;
+                }
+            }
+            objetosDisponibles.add(objeto);
+            objetosDisponibles.get(objetosDisponibles.size()-1).cantidad= cantidad;
+            System.out.println("Comprado Objeto nuevo");
+            //No podremos comprarle al usuario si quiere vendernos una baya
+            //
 
-        //dinero infinito en la tienda
-        //recibir objetos y darle el dinero
-return false;
-    }
-public void mostrarDisponibles(){
-    System.out.println("Los objetos disponibles son: ");
-    int indice =1;
-    for (Objeto objeto: objetosDisponibles) {
-        System.out.println(indice+" - ");
-        System.out.println(objeto); //faltan toString en objeto
-        indice++;
-    }
-}
-}
+            //dinero infinito en la tienda
+            //recibir objetos y darle el dinero
+            return true;
+        }
+        public void mostrarDisponibles() {
+            System.out.println("Los objetos disponibles son: ");
+            int indice = 1;
+            for (Objeto objeto1: objetosDisponibles) {
+                System.out.println(indice + " - ");
+                System.out.println(objeto); //faltan toString en objeto
+            }
+        }
+    }}
