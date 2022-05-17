@@ -38,16 +38,18 @@ public class Tienda {
         //validar que hay suficientes objetos del tipo requerido
         //ToDo Excepcion
         if(indiceObjeto>objetosDisponibles.size()){
-            System.out.println("Error no existe ese objeto");
+            System.out.println("Lo siento, no tenemos el objeto que esta pidiendo");
             return false;
         }else {
             if (objetosDisponibles.get(indiceObjeto).cantidad >= cantidad){
                 double precioTotal = cantidad*objetosDisponibles.get(indiceObjeto).costo;
                 if(precioTotal>= dinero){
-                    System.out.println("vendido");
+                    System.out.println("Gracias por su compra");
+                    System.out.println("Compraste"+cantidad+" "+objetosDisponibles.get(indiceObjeto).nombre+"por $"+precioTotal);
+                    System.out.println("Te quedan :"+(precioTotal-dinero));
                     return true;
                 }else{
-                    System.out.println("No te alcanza, te faltan:= " +(precioTotal- dinero));
+                    System.out.println("No te alcanza, te faltan:= " +(precioTotal- dinero)); //Su cambio es :
                     return false;
                 }
             }else{
@@ -75,32 +77,34 @@ public class Tienda {
         //No comprar baya if(Objeto.get(Baya).){}
 
         if (objeto.getClass().toString().equals("class Baya")) {
-            System.out.println("No acepto bayas");
+            System.out.println("No puedes vender bayas");
             return false;
         } else {
-            for(Objeto elemento: objetosDisponibles){
-                if(elemento.nombre.equals(objeto.nombre)){
-                    elemento.cantidad+= cantidad;
+            for (Objeto elemento : objetosDisponibles) {
+                if (elemento.nombre.equals(objeto.nombre)) {
+                    elemento.cantidad += cantidad;
                     System.out.println("Comprado objeto existente");
                     return true;
                 }
             }
             objetosDisponibles.add(objeto);
-            objetosDisponibles.get(objetosDisponibles.size()-1).cantidad= cantidad;
+            objetosDisponibles.get(objetosDisponibles.size() - 1).cantidad = cantidad;
             System.out.println("Comprado Objeto nuevo");
             //No podremos comprarle al usuario si quiere vendernos una baya
             //
 
             //dinero infinito en la tienda
             //recibir objetos y darle el dinero
-            return true;
         }
+            return true;
+
         public void mostrarDisponibles() {
             System.out.println("Los objetos disponibles son: ");
             int indice = 1;
             for (Objeto objeto1: objetosDisponibles) {
                 System.out.println(indice + " - ");
-                System.out.println(objeto); //faltan toString en objeto
+                System.out.println(objeto);//faltan toString en objeto
+                indice++;
             }
         }
     }}

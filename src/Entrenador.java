@@ -152,6 +152,33 @@ public class Entrenador extends Personaje {
             System.out.println("Dile hola a tu nuevo" + pokedexCPU.get(propCPU - 1));
             return true;
         }
+        //public boolean intercambiarPokemon(ArrayList<Pokemon> pokedexOpuesto){
+        /*System.out.println("Pokemones disponibles del entrenador Opuesto: ");
+        int indice = 1;
+        for (Pokemon pokemon: pokedexOpuesto) {
+            System.out.println(indice+" . ");
+            System.out.println(pokemon);
+            indice++;
+        }
+
+        System.out.println("¿Que pokemon deceas intercambiar?");
+        int indicePokemonOpuesto = sc.nextInt()-1;
+        System.out.println("Que pokemon ofreses?");
+        mostrarPokedex();
+        int indicePokemonPropio = sc.nextInt()-1;
+        System.out.println("Te lo cambio por: " + pokedex.get(indicePokemonPropio));
+
+        boolean probabilidad = ((random.nextInt(100)) > 60) ? true : false;
+        if(probabilidad){
+            Pokemon aux = pokedex.get(indicePokemonPropio);
+            pokedex.set(indicePokemonPropio, pokedexOpuesto.get(indicePokemonOpuesto));
+            pokedexOpuesto.remove(indicePokemonOpuesto);
+            pokedexOpuesto.add(aux);
+            return true;
+        } else {
+            System.out.println("El otro entrenador no accedio a intercambiar su pokemon");
+            return false;
+        }
         //tirar objeto
         //mostrar los elementos en mochila
         //que el usuario escoja cual tirar
@@ -164,5 +191,32 @@ public class Entrenador extends Personaje {
         //y random true o false acepta
         //si true
         // get y add (mas remove)
+        public void mostrarMochila(){
+            System.out.println("los objetos disponibles son: ");
+            int indice = 1;
+            for (Objeto objeto : mochila) {
+                System.out.println(indice+" . ");
+                System.out.println(objeto);
+                indice++;
+
+         */
+            }
+    public void mostrarMochila(){
+        System.out.println("los objetos disponibles son: ");
+        int indice = 1;
+        for (Objeto objeto : mochila) {
+            System.out.println(indice+" . ");
+            System.out.println(objeto);
+            indice++;
+        }
     }
-}
+
+    public void mostrarPokedex(){
+        System.out.println("los Pokemones disponibles son: ");
+        int indice = 1;
+        for (Pokemon pokemon : pokedex) {
+            System.out.println(indice+" . ");
+            System.out.println(pokemon);
+            indice++;
+        }
+    }
