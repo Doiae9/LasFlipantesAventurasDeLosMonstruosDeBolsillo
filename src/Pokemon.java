@@ -7,8 +7,10 @@ private int HP;
 private boolean esLegendario;
 private String debilContra;
 private String fuerteContra;
+    private int fuerza;
+    private int velocidad;
 
-    public Pokemon(String nombre, int nivel, char genero, String nombre1, String tipo, Habilidad habilidad, int HP, boolean esLegendario, String debilContra, String fuerteContra) {
+    public Pokemon(String nombre, int nivel, char genero, String nombre1, String tipo, Habilidad habilidad, int HP, boolean esLegendario, String debilContra, String fuerteContra, int fuerza, int velocidad) {
         super(nombre, nivel, genero);
         this.nombre = nombre1;
         this.tipo = tipo;
@@ -17,6 +19,24 @@ private String fuerteContra;
         this.esLegendario = esLegendario;
         this.debilContra = debilContra;
         this.fuerteContra = fuerteContra;
+        this.fuerza = fuerza;
+        this.velocidad = velocidad;
+    }
+
+    public int getFuerza() {
+        return fuerza;
+    }
+
+    public void setFuerza(int fuerza) {
+        this.fuerza = fuerza;
+    }
+
+    public int getVelocidad() {
+        return velocidad;
+    }
+
+    public void setVelocidad(int velocidad) {
+        this.velocidad = velocidad;
     }
 
     @Override

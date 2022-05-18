@@ -57,6 +57,7 @@ public abstract class Objeto {
                 ", tipo='" + tipo + '\'' +
                 '}';
     }
-    public abstract void usar();
 
+
+    public abstract boolean usar(Pokemon pokemon);
 }

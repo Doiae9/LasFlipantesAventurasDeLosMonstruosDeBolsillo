@@ -1,4 +1,4 @@
-public class Baya extends Objeto{
+public class Baya extends Objeto {
     //efecto - String
     //duracion - entero
     private String efecto;
@@ -27,13 +27,21 @@ public class Baya extends Objeto{
     }
 
     @Override
-    public void usar() {
+    public boolean usar(Pokemon pokemon) {
+        if (this.efecto.equals("curacion")) {
+            pokemon.getHabilidad().setAtaqueBase(pokemon.getHabilidad().getAtaqueBase());
+            return true;
+        } else if (this.efecto.equals("velocidad")) {
+            pokemon.setVelocidad(pokemon.getVelocidad() + 20);{
 
+            }
+        }
     }
+}
 
     //usar
     //si es curacion 20 hp
     // si es fuerza
     //aumentar 20 ataque
 
-}
+
