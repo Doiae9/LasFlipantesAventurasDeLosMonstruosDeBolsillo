@@ -49,6 +49,11 @@ private String fuerteContra;
         this.nombre = nombre;
     }
 
+    @Override
+    public boolean pelear(Pokemon PokemonContrario) {
+        return false;
+    }
+
     public String getTipo() {
         return tipo;
     }

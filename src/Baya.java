@@ -32,9 +32,12 @@ public class Baya extends Objeto {
             pokemon.getHabilidad().setAtaqueBase(pokemon.getHabilidad().getAtaqueBase());
             return true;
         } else if (this.efecto.equals("velocidad")) {
-            pokemon.setVelocidad(pokemon.getVelocidad() + 20);{
+            pokemon.setVelocidad(pokemon.getVelocidad() + 20);
+            {
 
             }
+        } else {
+            return false;
         }
     }
 }

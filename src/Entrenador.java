@@ -1,6 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.PrimitiveIterator;
 import java.util.Scanner;
 
 public class Entrenador extends Personaje {
@@ -219,5 +218,15 @@ public class Entrenador extends Personaje {
             System.out.println(pokemon);
             indice++;
         }
+    }
+
+    @Override
+    public boolean pelear(Pokemon PokemonContrario) {
+        //escoger pokemmon para pelear
+        ArrayList<Pokemon> paraPelea = new ArrayList<>();
+        //mostrar pokedex
+        //el usuario escoge 3
+        //
+        return false;
     }
 }

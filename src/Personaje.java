@@ -1,4 +1,4 @@
-public class Personaje {
+public abstract class Personaje {
     //atributos
     //nombre -String protected
     //nivel- entero protected
@@ -37,6 +37,10 @@ public class Personaje {
     public void setGenero(char genero) {
         this.genero = genero;
     }
+    public abstract boolean pelear(Pokemon PokemonContrario);
+
+    public abstract boolean pelear();
     //pelear - abstracto
+
     //
 }
