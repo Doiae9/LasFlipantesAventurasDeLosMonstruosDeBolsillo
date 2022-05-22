@@ -39,6 +39,14 @@ public abstract class Personaje {
     }
     public abstract boolean pelear(Pokemon PokemonContrario);
 
+    @Override
+    public String toString() {
+        return "Personaje{" +
+                "nombre='" + nombre + '\'' +
+                ", nivel=" + nivel +
+                ", genero=" + genero +
+                '}';
+    }
     //pelear - abstracto
 
     //

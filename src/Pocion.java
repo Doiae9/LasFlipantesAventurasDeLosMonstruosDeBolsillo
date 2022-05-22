@@ -43,7 +43,19 @@ public class Pocion extends Objeto {
                 return false;
             }
     }
-//usar
+
+    @Override
+    public String toString() {
+        return "Pocion{" +
+                "costo=" + costo +
+                ", cantidad=" + cantidad +
+                ", nombre='" + nombre + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", efecto='" + efecto + '\'' +
+                ", duracion=" + duracion +
+                '}';
+    }
+    //usar
     //si es curacion 20 hp
     // si es fuerza
        //aumentar 20 ataque

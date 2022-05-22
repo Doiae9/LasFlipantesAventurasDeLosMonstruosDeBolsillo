@@ -2,7 +2,6 @@
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-
 public class Entrenador extends Personaje {
     //region - String
     // PokemonMascota - Pokemon
@@ -80,8 +79,6 @@ public class Entrenador extends Personaje {
     // nivel n (pokeomn y entrenador) -> 10 Xp * 1.5
     // escoger pokemon del pokedex
     // Si su Hp es superior a 15
-    //escoger dos fuertes y un debil aleatoriamente
-    //si no tiene fuertes poner 3 aleatorios
     //Y su atributo fuerte coincide con el pokemon a pelear
     //arreglo de pokemones a usar en la pelea
     //darle a escoger pokemon al entrenador

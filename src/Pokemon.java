@@ -49,11 +49,6 @@ private String fuerteContra;
         this.nombre = nombre;
     }
 
-    @Override
-    public boolean pelear(Pokemon PokemonContrario) {
-        return false;
-    }
-
     public String getTipo() {
         return tipo;
     }
@@ -110,6 +105,8 @@ private String fuerteContra;
     //fuerteContra- String
 
 
+
+
     //pelea
 
       //si mi pokemon es fuerte contra pokemon opuesto
@@ -121,7 +118,10 @@ private String fuerteContra;
 
     //cuando lanza el ataque se resta la cantidad
     // de ataque del HP
-
+    @Override
+    public boolean pelear(Pokemon PokemonContrario) {
+        return false;
+    }
 
     @Override
     public String toString() {
@@ -140,4 +140,5 @@ private String fuerteContra;
                 ", velocidad=" + velocidad +
                 '}';
     }
+
 }
