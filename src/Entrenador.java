@@ -156,38 +156,16 @@ public class Entrenador extends Personaje {
             System.out.println("El otro entrenador no aceptó tu propuesta");
             return false;
         }}
-
-        //tirar objeto
-        //mostrar los elementos en mochila
-        //que el usuario escoja cual tirar
-//Crear menú
-        //intercambiar //recibir entrenador, su pokedex
-
-        //entrenador opuesto muestra pokedex
-        //Escojo el pokemon que quiero
-        // lw propongo uno de mi pokedex
-        //y random true o false acepta
-        //si true
-        // get y add (mas remove)
-        public void mostrarMochila(){
+        public void mostrarMochila() {
             System.out.println("los objetos disponibles son: ");
             int indice = 1;
             for (Objeto objeto : mochila) {
-                System.out.println(indice+" . ");
+                System.out.println(indice + " . ");
                 System.out.println(objeto);
                 indice++;
 
-         */
             }
-    public void mostrarMochila(){
-        System.out.println("los objetos disponibles son: ");
-        int indice = 1;
-        for (Objeto objeto : mochila) {
-            System.out.println(indice+" . ");
-            System.out.println(objeto);
-            indice++;
         }
-    }
 
     public void mostrarPokedex(ArrayList<Pokemon> Pokemones){
         System.out.println("los Pokemones disponibles son: ");
@@ -253,5 +231,19 @@ public class Entrenador extends Personaje {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return "Entrenador{" +
+                "region='" + region + '\'' +
+                ", mascota=" + mascota +
+                ", torneosganados=" + torneosganados +
+                ", pokedex=" + pokedex +
+                ", mochila=" + mochila +
+                ", dinero=" + dinero +
+                ", nombre='" + nombre + '\'' +
+                ", nivel=" + nivel +
+                ", genero=" + genero +
+                '}';
     }
+}
 
