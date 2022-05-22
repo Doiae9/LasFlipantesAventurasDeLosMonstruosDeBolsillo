@@ -70,9 +70,12 @@ public class Tienda {
 
 
     }
+
+
+
     //comprar
     //vender
-    public boolean usuariovender(Objeto objeto, int cantidad, int indiceObjeto) {
+    public boolean usuariovender(Objeto objeto, int cantidad) {
         //logica inversa de compra
         //No comprar baya if(Objeto.get(Baya).){}
 
@@ -83,7 +86,7 @@ public class Tienda {
             for (Objeto elemento : objetosDisponibles) {
                 if (elemento.nombre.equals(objeto.nombre)) {
                     elemento.cantidad += cantidad;
-                    System.out.println("Comprado objeto existente");
+                    System.out.println("Compraste"+elemento.nombre);
                     return true;
                 }
             }
@@ -96,15 +99,22 @@ public class Tienda {
             //dinero infinito en la tienda
             //recibir objetos y darle el dinero
         }
-            return true;
-
+        return true;
+    }
         public void mostrarDisponibles() {
             System.out.println("Los objetos disponibles son: ");
             int indice = 1;
-            for (Objeto objeto1: objetosDisponibles) {
+            for (Objeto objeto: objetosDisponibles) {
                 System.out.println(indice + " - ");
                 System.out.println(objeto);//faltan toString en objeto
                 indice++;
             }
         }
-    }}
+        @Override
+        public String toString() {
+            return "Tienda{" +
+                    "nombre='" + nombre + '\'' +
+                    ", objetosDisponibles=" + objetosDisponibles +
+                    '}';
+        }
+    }
