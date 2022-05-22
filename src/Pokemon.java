@@ -111,8 +111,7 @@ private String fuerteContra;
 
 
     //pelea
-    //consumi pocion o baya para ataque?
-    //habilidad ataqueBase +20
+
       //si mi pokemon es fuerte contra pokemon opuesto
         //+ ataque de habilidad
     //si no si mi pokemon es debil contra el pokemon opuesto
@@ -124,4 +123,21 @@ private String fuerteContra;
     // de ataque del HP
 
 
+    @Override
+    public String toString() {
+        return "Pokemon{" +
+                "nombre='" + nombre + '\'' +
+                ", nivel=" + nivel +
+                ", genero=" + genero +
+                ", nombre='" + nombre + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", habilidad=" + habilidad +
+                ", HP=" + HP +
+                ", esLegendario=" + esLegendario +
+                ", debilContra='" + debilContra + '\'' +
+                ", fuerteContra='" + fuerteContra + '\'' +
+                ", fuerza=" + fuerza +
+                ", velocidad=" + velocidad +
+                '}';
+    }
 }
