@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Entrenador extends Personaje {
@@ -12,7 +13,6 @@ public class Entrenador extends Personaje {
     private Pokemon mascota;
     private int torneosganados;
     ArrayList<Pokemon> pokedex;
-    ArrayList<Pokemon> pokedexCPU;
     ArrayList<Objeto> mochila;
     private double dinero;
 
@@ -103,81 +103,60 @@ public class Entrenador extends Personaje {
 
     //TODO metodos tirar objeto, intercambiar porkémon.
     //Crear un menú
-    public void tirarObjeto() {
-        int res;
+    public boolean tirarObjeto(int res) {
         Scanner leer = new Scanner(System.in);
-        do {
-            System.out.println("Que deseas tirar?, si ya no deseas tirar ningun objeto pulsa 0");
+            System.out.println("Que deseas tirar?");
             for (int i = 0; i < mochila.size(); i++) {
-                System.out.println(i + 1 + "-" + mochila.get(i).getNombre());
+                System.out.println(1+i +"-" + mochila.get(i).getNombre());
             }
             res = leer.nextInt();
-            if (res != 0) {
+            if (res>mochila.size()-1) {
+                System.out.println("Que raro, este objeto no esta en la mochila...");
+                return false;
+            }else{
+                System.out.println("Tiraste"+mochila.get(res-1).getNombre());
                 mochila.remove(res - 1);
-                System.out.println("Objeto eliminado");
-            }
-        } while (res != 0);
-    }
+        return true;
+    }}
 
-    public boolean intercambiar() {
+    //Todo probar metodo
+    public boolean intercambiar(ArrayList<Pokemon> pokedexCPU) {
+        Random random= new Random();
         Scanner leer = new Scanner(System.in);
         int prop, propCPU;
-        double decision = 0;
-        System.out.println("Escoge un pokemon para intercambiar");
-        for (int i = 0; i < pokedex.size(); i++) {
-            System.out.print(i + 1 + "- " + pokedex.get(i).getNombre());
-        }
-        System.out.println("Pokemon del otro entrenador"); //usar un nombre de un arraylist de nombres. prop
-
+        boolean decision;
+        System.out.println("Pokemon del otro entrenador");
         for (int i = 0; i < pokedexCPU.size(); i++) {
-            int index = (int) (Math.random() * pokedexCPU.size());
-            System.out.println(i + 1 + "- " + pokedexCPU.get(index));
-            //propuesta, randomizar el pokedex de la CPU en base a los pokemon creados.
-        }
+            System.out.println(1+i +"- " + pokedexCPU.get(i));
+            //int indice = 1;
+           // for (Pokemon pokemon: pokedexOpuesto) {
+               // System.out.println(indice+" . ");
+              //  System.out.println(pokemon);
+               // indice++;
+            }
         System.out.println("Selecciona el pokemon que deseas del otro entrenador");
-        propCPU = leer.nextInt();
+        propCPU = leer.nextInt()-1;
         System.out.println("Selecciona tu propuesta de intercambio");
-        prop = leer.nextInt();
-        decision = Math.random() * 100;
-        if (decision < 50) {
+        mostrarPokedex(pokedex);
+        prop = leer.nextInt()-1;
+        System.out.println("Te lo cambio por "+pokedex.get(prop));
+        decision = ((random.nextInt(100)) >60) ? true : false;
+        if (decision) {
+            Pokemon aux = pokedex.get(prop);
+            pokedex.set(prop, pokedexCPU.get(propCPU));
+            System.out.println("¡Adios " + pokedex.get(prop).getNombre() + " !");
+            pokedex.add(pokedexCPU.get(propCPU ));
+            pokedexCPU.add(pokedex.get(prop ));
+            pokedex.remove(prop);
+            pokedexCPU.remove(propCPU); //Proceso repetido?
+            System.out.println("Dile hola a tu nuevo " + pokedexCPU.get(propCPU).getNombre());
+
+            return true;
+        } else {
             System.out.println("El otro entrenador no aceptó tu propuesta");
             return false;
-        } else {
-            System.out.println("¡Adios" + pokedex.get(prop - 1).getNombre() + " !");
-            pokedex.add(pokedexCPU.get(propCPU - 1));
-            pokedexCPU.add(pokedex.get(prop - 1));
-            pokedex.remove(prop - 1);
-            pokedexCPU.remove(propCPU - 1);
-            System.out.println("Dile hola a tu nuevo" + pokedexCPU.get(propCPU - 1));
-            return true;
-        }
-        //public boolean intercambiarPokemon(ArrayList<Pokemon> pokedexOpuesto){
-        /*System.out.println("Pokemones disponibles del entrenador Opuesto: ");
-        int indice = 1;
-        for (Pokemon pokemon: pokedexOpuesto) {
-            System.out.println(indice+" . ");
-            System.out.println(pokemon);
-            indice++;
-        }
+        }}
 
-        System.out.println("¿Que pokemon deceas intercambiar?");
-        int indicePokemonOpuesto = sc.nextInt()-1;
-        System.out.println("Que pokemon ofreses?");
-        mostrarPokedex();
-        int indicePokemonPropio = sc.nextInt()-1;
-        System.out.println("Te lo cambio por: " + pokedex.get(indicePokemonPropio));
-
-        boolean probabilidad = ((random.nextInt(100)) > 60) ? true : false;
-        if(probabilidad){
-            Pokemon aux = pokedex.get(indicePokemonPropio);
-            pokedex.set(indicePokemonPropio, pokedexOpuesto.get(indicePokemonOpuesto));
-            pokedexOpuesto.remove(indicePokemonOpuesto);
-            pokedexOpuesto.add(aux);
-            return true;
-        } else {
-            System.out.println("El otro entrenador no accedio a intercambiar su pokemon");
-            return false;
-        }
         //tirar objeto
         //mostrar los elementos en mochila
         //que el usuario escoja cual tirar
@@ -225,9 +204,9 @@ public class Entrenador extends Personaje {
         //escoger pokemmon para pelear
         Scanner scanner = new Scanner(System.in);
         ArrayList<Pokemon> paraPelea = new ArrayList<>();
-        mostrarPokedex();
+        mostrarPokedex(pokedex);
         System.out.println("Escoge 3 pokemones");
-        for(int i=1 i<3; i++){
+        for(int i=1; i<3; i++){
             System.out.println("ingresa pokemon");
             paraPelea.add(pokedex.get(scanner.nextInt()-1));
         }
@@ -239,12 +218,13 @@ public class Entrenador extends Personaje {
             respuesta = scanner.nextInt();
             if(paraPelea.size() !=0) {
                 if (respuesta == 1) {
-                    System.out.println("Escoge el pokemon para pelear");
+                    System.out.println("¿Con cual pokemon deseas pelear?");
                     mostrarPokedex(paraPelea);
                     int eleccion = scanner.nextInt();
                     //validar si es true o false
                     if(!paraPelea.get(eleccion).pelear(PokemonContrario)){
                         paraPelea.remove(eleccion);
+                        return false;
                     }else{
                         return true;
                     }
@@ -258,8 +238,8 @@ public class Entrenador extends Personaje {
                     mostrarPokedex(paraPelea);
                     //validar si retorno true o false
                     mochila.get(eleccion - 1).usar(paraPelea.get(scanner.nextInt()));
-
-                } else {
+                    return true;
+                } else if(respuesta==3) {
                     System.out.println("Escapaste sin problemas");
                     return false;
                 }
@@ -272,4 +252,6 @@ public class Entrenador extends Personaje {
         //
         return false;
     }
-}
+
+    }
+

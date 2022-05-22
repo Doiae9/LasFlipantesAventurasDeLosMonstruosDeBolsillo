@@ -39,7 +39,6 @@ public abstract class Personaje {
     }
     public abstract boolean pelear(Pokemon PokemonContrario);
 
-    public abstract boolean pelear();
     //pelear - abstracto
 
     //
