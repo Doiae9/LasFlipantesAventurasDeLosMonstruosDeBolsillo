@@ -118,6 +118,7 @@ private String fuerteContra;
 
     //cuando lanza el ataque se resta la cantidad
     // de ataque del HP
+    // Todo metodo pelear
     @Override
     public boolean pelear(Pokemon PokemonContrario) {
         return false;
