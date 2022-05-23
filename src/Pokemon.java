@@ -1,3 +1,6 @@
+import java.util.Random;
+import java.util.Scanner;
+
 public class Pokemon extends Personaje{
 
 private String nombre;
@@ -121,7 +124,29 @@ private String fuerteContra;
     // Todo metodo pelear
     @Override
     public boolean pelear(Pokemon PokemonContrario) {
+        Scanner leer= new Scanner(System.in);
+        Random random= new Random();
+        System.out.println("Entrenador contrario sacó"+PokemonContrario.nombre);
+        //turnos
+        do {
+            if (PokemonContrario.velocidad > this.velocidad) {
+            int atkCPU=0,atk,aumento;
+            atkCPU= random.nextInt(4);
+            //mostrar habilidades
+               this.HP -= PokemonContrario.getHabilidades().get(atkCPU).getataqueBase();
+            atk=leer.nextInt();
+            }else{
+
+            }
+           if(PokemonContrario.fuerteContra.equals(this.debilContra)) {
+                       PokemonContrario.getHabilidad().setAtaqueBase(PokemonContrario.getHabilidad().getAtaqueBase()*2);
+           }
+        }while(this.HP!=0 || PokemonContrario.getHP()!=0);
+        if(mio) return false;
+        else
+            return true;
         return false;
+
     }
 
     @Override
