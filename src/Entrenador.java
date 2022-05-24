@@ -177,7 +177,6 @@ public class Entrenador extends Personaje {
     @Override
     public boolean pelear(Pokemon PokemonContrario) {
         //escoger pokemmon para pelear
-        if(PokemonContrario.)
         Scanner scanner = new Scanner(System.in);
         ArrayList<Pokemon> paraPelea = new ArrayList<>();
         mostrarPokedex(pokedex);

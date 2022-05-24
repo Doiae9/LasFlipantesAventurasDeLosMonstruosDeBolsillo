@@ -125,27 +125,61 @@ private String fuerteContra;
     @Override
     public boolean pelear(Pokemon PokemonContrario) {
         Scanner leer= new Scanner(System.in);
-        Random random= new Random();
-        System.out.println("Entrenador contrario sacó"+PokemonContrario.nombre);
+        int turno=0, aumento, dis;
+
+        System.out.println("Entrenador contrario sacó a"+PokemonContrario.nombre);
         //turnos
         do {
+            //valida fuerte, debil contra.
+            if(turno==0){
+                if(PokemonContrario.fuerteContra.equals(this.debilContra)) {
+                aumento=PokemonContrario.fuerza/2;
+                PokemonContrario.fuerza+=aumento;
+                dis=this.fuerza/2;
+                this.fuerza-=dis;
+                turno++;}
+             else if(PokemonContrario.debilContra.equals(this.fuerteContra)){
+                 aumento=this.fuerza/2;
+                 this.fuerza+=aumento;
+                 dis=PokemonContrario.fuerza/2;
+                 PokemonContrario.fuerza-=dis;
+                 turno++;
+             }
+             else{
+                 //ataque normal
+            }
+             //Calculo de dannio hecho
+                int validacion=this.habilidad.getAtaqueBase()/2;
+                int validacion2=PokemonContrario.getHabilidad().getAtaqueBase()/2;
+                int validacion3=PokemonContrario.fuerza/2;
+                int validacion4=this.fuerza/2;
+                int atq=validacion+validacion4;
+                int atq2=validacion2+validacion3;
+                //Validacion velocidad del poke
             if (PokemonContrario.velocidad > this.velocidad) {
-            int atkCPU=0,atk,aumento;
-            atkCPU= random.nextInt(4);
+                this.HP -=atq2;
+                PokemonContrario.HP-=atq;
+            }else{
+                PokemonContrario.HP-=atq;
+                this.HP -=atq2;
+            }
+            //todo mejoras futuras
+                // Random random= new Random();
             //mostrar habilidades
-               this.HP -= PokemonContrario.getHabilidades().get(atkCPU).getataqueBase();
-            atk=leer.nextInt();
+                // atkCPU= random.nextInt(4);
+                // this.HP -= PokemonContrario.getHabilidades().get(atkCPU).getataqueBase();
+            //atk=leer.nextInt();
+
             }else{
 
             }
-           if(PokemonContrario.fuerteContra.equals(this.debilContra)) {
-                       PokemonContrario.getHabilidad().setAtaqueBase(PokemonContrario.getHabilidad().getAtaqueBase()*2);
-           }
+
         }while(this.HP!=0 || PokemonContrario.getHP()!=0);
-        if(mio) return false;
-        else
-            return true;
-        return false;
+        if(this.HP==0){
+            System.out.println("Tu"+this.nombre+" se debilitó...");
+            return false;}
+        else{
+            return true;}
 
     }
 
