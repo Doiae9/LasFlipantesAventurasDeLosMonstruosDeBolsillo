@@ -126,19 +126,19 @@ private String fuerteContra;
     public boolean pelear(Pokemon PokemonContrario) {
         Scanner leer= new Scanner(System.in);
         int turno=0, aumento, dis;
-
         System.out.println("Entrenador contrario sacó a"+PokemonContrario.nombre);
         //turnos
         do {
+
             //valida fuerte, debil contra.
             if(turno==0){
-                if(PokemonContrario.fuerteContra.equals(this.debilContra)) {
+                if(PokemonContrario.fuerteContra.equals(this.tipo)) {
                 aumento=PokemonContrario.fuerza/2;
                 PokemonContrario.fuerza+=aumento;
                 dis=this.fuerza/2;
                 this.fuerza-=dis;
                 turno++;}
-             else if(PokemonContrario.debilContra.equals(this.fuerteContra)){
+             else if(PokemonContrario.debilContra.equals(this.tipo)){
                  aumento=this.fuerza/2;
                  this.fuerza+=aumento;
                  dis=PokemonContrario.fuerza/2;
@@ -146,22 +146,35 @@ private String fuerteContra;
                  turno++;
              }
              else{
+                 turno++;
                  //ataque normal
             }
              //Calculo de dannio hecho
-                int validacion=this.habilidad.getAtaqueBase()/2;
-                int validacion2=PokemonContrario.getHabilidad().getAtaqueBase()/2;
-                int validacion3=PokemonContrario.fuerza/2;
-                int validacion4=this.fuerza/2;
-                int atq=validacion+validacion4;
-                int atq2=validacion2+validacion3;
+                //todo moverlo a otro lado
+                int MicalcAtqB=this.habilidad.getAtaqueBase()/2;
+                int CPUcalcAtqB=PokemonContrario.getHabilidad().getAtaqueBase()/2;
+                int CPUcalcAtq=PokemonContrario.fuerza/2;
+                int calcAtq=this.fuerza/2;
+                int MiAtq=MicalcAtqB+calcAtq;
+                int CPUatq=CPUcalcAtqB+CPUcalcAtq;
                 //Validacion velocidad del poke
             if (PokemonContrario.velocidad > this.velocidad) {
-                this.HP -=atq2;
-                PokemonContrario.HP-=atq;
+                this.HP -=CPUatq;
+                if(this.HP<=0){
+                    return false;
+                }
+                if( PokemonContrario.HP<=0) {
+                    PokemonContrario.HP -= MiAtq;
+                }
             }else{
-                PokemonContrario.HP-=atq;
-                this.HP -=atq2;
+                PokemonContrario.HP-=MiAtq;
+               if( PokemonContrario.HP<=0){
+                   return true;
+               }
+                this.HP -=CPUatq;
+                if(this.HP<=0){
+                    return false;
+                }
             }
             //todo mejoras futuras
                 // Random random= new Random();
@@ -179,6 +192,7 @@ private String fuerteContra;
             System.out.println("Tu"+this.nombre+" se debilitó...");
             return false;}
         else{
+            System.out.println("");
             return true;}
 
     }
