@@ -125,7 +125,7 @@ private String fuerteContra;
     @Override
     public boolean pelear(Pokemon PokemonContrario) {
         Scanner leer= new Scanner(System.in);
-        int turno=0, aumento, dis;
+        int turno=0, aumento, dis,MicalcAtqB,CPUcalcAtqB,CPUcalcAtq,calcAtq;
         System.out.println("Entrenador contrario sacó a"+PokemonContrario.nombre);
         //turnos
         do {
@@ -151,16 +151,17 @@ private String fuerteContra;
             }
              //Calculo de dannio hecho
                 //todo moverlo a otro lado
-                int MicalcAtqB=this.habilidad.getAtaqueBase()/2;
-                int CPUcalcAtqB=PokemonContrario.getHabilidad().getAtaqueBase()/2;
-                int CPUcalcAtq=PokemonContrario.fuerza/2;
-                int calcAtq=this.fuerza/2;
+                MicalcAtqB=this.habilidad.getAtaqueBase()/2;
+                CPUcalcAtqB=PokemonContrario.getHabilidad().getAtaqueBase()/2;
+                 CPUcalcAtq=PokemonContrario.fuerza/2;
+                 calcAtq=this.fuerza/2;
                 int MiAtq=MicalcAtqB+calcAtq;
                 int CPUatq=CPUcalcAtqB+CPUcalcAtq;
                 //Validacion velocidad del poke
             if (PokemonContrario.velocidad > this.velocidad) {
                 this.HP -=CPUatq;
                 if(this.HP<=0){
+                    System.out.println("Tu"+this.nombre+" se debilitó...");
                     return false;
                 }
                 if( PokemonContrario.HP<=0) {
@@ -169,6 +170,7 @@ private String fuerteContra;
             }else{
                 PokemonContrario.HP-=MiAtq;
                if( PokemonContrario.HP<=0){
+                   System.out.println("el pokemon enemigo se debilitó");
                    return true;
                }
                 this.HP -=CPUatq;
@@ -214,5 +216,45 @@ private String fuerteContra;
                 ", velocidad=" + velocidad +
                 '}';
     }
+    /*public boolean pelear(Pokemon pokemon){
+    //Solo ocurre al inicio de la pelea
+    // if(this.fuerteContra.equals(pokemonOpuesto.getTipo())){
+    //int ataqueBaseMio=ataqueBasemio;
+    //this.habilidad.setAtaqueBase(this.habilidad.getAtaqueBase()+20);
+    //PokemonOpuesto.getHabilidad().set.AtaqueBase(PokeomOpuesto.getHabilidad().getAtaqueBase()+20;
+    //}else if(pokemonOpuesto.getFuerteContra().equals(this.tipo){
+    //}else{}
+    //do{
+    //if(this.velocidad>pokemonOpuesto.velocidad){
+    //yo empiezo
+    //pokemonOpuesto.setHP(pokemonOpuesto.getHP()-this.habilidad.getAtaqueBase());
+     murio?
+    //if(pokemonOpuesto.getHp()<=o){
+    /*return true; //yo gano me salgo
+    }else{
+     empieza el opuesto
+    this.hp-=pokemonOpuesto.getHabilidad().getAtaqueBase();
+    if(this.hp<=0){ //no murio?
+
+    pierdo, me salgo
+    return false;
+
+     }else{
+
+      pokemonOpuesto.setHp(pokemonOpuesto.getHp()-this.habilidad;
+     if(pokemonopuesto.getHp()<=0)
+     return true;
+     }
+     */
+
+
+
+
+    //while(true); Solo usar esta condicion si se esta esta seguro de que vas a salir en algún momento
+    //De lo contrario usar la condicion del HP
+
+
+
+
 
 }
