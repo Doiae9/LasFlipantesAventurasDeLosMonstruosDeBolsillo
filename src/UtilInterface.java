@@ -13,4 +13,5 @@ public interface UtilInterface {
     //String[] Nombres Pokemon = devolver arreglo de string
     //Colocar los tipos en un switch
     String[] nombresAleatorios(String tipo);
+
 }
