@@ -125,38 +125,39 @@ private String fuerteContra;
     @Override
     public boolean pelear(Pokemon PokemonContrario) {
         Scanner leer= new Scanner(System.in);
-        int turno=0, aumento, dis,MicalcAtqB,CPUcalcAtqB,CPUcalcAtq,calcAtq;
+        int turno=0, aumento, dis,MicalcAtqB,CPUcalcAtqB,CPUcalcAtq,calcAtq,MiAtq,CPUatq;
         System.out.println("Entrenador contrario sacó a"+PokemonContrario.nombre);
         //turnos
         do {
 
             //valida fuerte, debil contra.
-            if(turno==0){
-                if(PokemonContrario.fuerteContra.equals(this.tipo)) {
-                aumento=PokemonContrario.fuerza/2;
-                PokemonContrario.fuerza+=aumento;
-                dis=this.fuerza/2;
-                this.fuerza-=dis;
-                turno++;}
-             else if(PokemonContrario.debilContra.equals(this.tipo)){
-                 aumento=this.fuerza/2;
-                 this.fuerza+=aumento;
-                 dis=PokemonContrario.fuerza/2;
-                 PokemonContrario.fuerza-=dis;
-                 turno++;
-             }
-             else{
-                 turno++;
-                 //ataque normal
+            if(turno==0) {
+                if (PokemonContrario.fuerteContra.equals(this.tipo)) {
+                    aumento = PokemonContrario.fuerza / 2;
+                    PokemonContrario.fuerza += aumento;
+                    dis = this.fuerza / 2;
+                    this.fuerza -= dis;
+                    System.out.println("Tu pokemon tiene desventaja de tipo");
+                    turno++;
+                } else if (PokemonContrario.debilContra.equals(this.tipo)) {
+                    aumento = this.fuerza / 2;
+                    this.fuerza += aumento;
+                    dis = PokemonContrario.fuerza / 2;
+                    PokemonContrario.fuerza -= dis;
+                    System.out.println("Tu pokemon tiene ventaja de tipo");
+                    turno++;
+                } else {
+                    turno++;
+                    //ataque normal
+                }
+                //Calculo de dannio hecho
+                MicalcAtqB = this.habilidad.getAtaqueBase() / 2;
+                CPUcalcAtqB = PokemonContrario.getHabilidad().getAtaqueBase() / 2;
+                CPUcalcAtq = PokemonContrario.fuerza / 2;
+                calcAtq = this.fuerza / 2;
+                MiAtq = MicalcAtqB + calcAtq;
+                CPUatq = CPUcalcAtqB + CPUcalcAtq;
             }
-             //Calculo de dannio hecho
-                //todo moverlo a otro lado
-                MicalcAtqB=this.habilidad.getAtaqueBase()/2;
-                CPUcalcAtqB=PokemonContrario.getHabilidad().getAtaqueBase()/2;
-                 CPUcalcAtq=PokemonContrario.fuerza/2;
-                 calcAtq=this.fuerza/2;
-                int MiAtq=MicalcAtqB+calcAtq;
-                int CPUatq=CPUcalcAtqB+CPUcalcAtq;
                 //Validacion velocidad del poke
             if (PokemonContrario.velocidad > this.velocidad) {
                 this.HP -=CPUatq;

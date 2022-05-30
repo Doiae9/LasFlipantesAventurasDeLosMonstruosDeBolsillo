@@ -69,7 +69,7 @@ Scanner leer = new Scanner(System.in);
                 BancoDF[1] = "fuego";
             case "roca":
                 BancoDF[0] = "planta";
-                BancoDF[1] = "roca";
+                BancoDF[1] = "hielo";
             case "lucha":
                 BancoDF[0] = "psiquico";
                 BancoDF[1] = "roca";
@@ -80,11 +80,22 @@ Scanner leer = new Scanner(System.in);
                 BancoDF[0] = "lucha";
                 BancoDF[1] = "psiquico";
             case "fantasma":
+                BancoDF[0] = "fantasma";
+                BancoDF[1] = "psiquico";
+            case "planta":
+                BancoDF[0] = "bicho";
+                BancoDF[1] = "tierra";
+            case "bicho":
                 BancoDF[0] = "";
                 BancoDF[1] = "";
+            case "volador":
+                BancoDF[0] = "roca";
+                BancoDF[1] = "";
+
             default:
                 BancoDF[0] = "lucha";
                 BancoDF[1] = "fantasma";
+
         }
 
         return new String[0];
@@ -96,13 +107,14 @@ Scanner leer = new Scanner(System.in);
     String[] BancoNombres= new String[4];
     switch (tipo){
         case "agua":
-           BancoNombres [0]=""
-            [1]
+           BancoNombres [0]="";
+           BancoNombres [1]="";
+
         }
 
     }
         return new String[0];
     }
-}
+
 //static no necesitas llamar objetos
 //mostrar menu.
