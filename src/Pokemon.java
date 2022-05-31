@@ -12,7 +12,7 @@ private String debilContra;
 private String fuerteContra;
     private int fuerza;
     private int velocidad;
-
+    int turno=0, aumento, dis,MicalcAtqB,CPUcalcAtqB,CPUcalcAtq,calcAtq,MiAtq,CPUatq;
     public Pokemon(String nombre, int nivel, char genero, String nombre1, String tipo, Habilidad habilidad, int HP, boolean esLegendario, String debilContra, String fuerteContra, int fuerza, int velocidad) {
         super(nombre, nivel, genero);
         this.nombre = nombre1;
@@ -125,7 +125,7 @@ private String fuerteContra;
     @Override
     public boolean pelear(Pokemon PokemonContrario) {
         Scanner leer= new Scanner(System.in);
-        int turno=0, aumento, dis,MicalcAtqB,CPUcalcAtqB,CPUcalcAtq,calcAtq,MiAtq,CPUatq;
+
         System.out.println("Entrenador contrario sacó a"+PokemonContrario.nombre);
         //turnos
         do {
@@ -186,9 +186,8 @@ private String fuerteContra;
                 // this.HP -= PokemonContrario.getHabilidades().get(atkCPU).getataqueBase();
             //atk=leer.nextInt();
 
-            }else{
 
-            }
+
 
         }while(this.HP!=0 || PokemonContrario.getHP()!=0);
         if(this.HP==0){
