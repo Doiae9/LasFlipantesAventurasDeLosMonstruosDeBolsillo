@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 import static java.lang.System.currentTimeMillis;
 
@@ -71,20 +73,51 @@ public class Main implements  UtilInterface {
 
     static Habilidad habilidad22= new Habilidad("Acido",
             "Arroja un acido nocivo que es corrosivo",70);
+    static ArrayList<String> tiposPokemon;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.out.println();
-        long tiempoinicial = currentTimeMillis();
-        //poner la palabra implements y el nombre de la interface
-        //
+       Thread.sleep(1500);
+        Main objetomain= new Main();
+        long tiempoInicial = 0;
+        objetomain.tiempoJugado(tiempoInicial,System.currentTimeMillis());
+        System.out.println(objetomain.crearPokemonAleatorio());
+        System.out.println(objetomain.crearPokemonAleatorio());
+        System.out.println(objetomain.crearPokemonAleatorio());
 
-        tiempojugado(tiempoinicial, currentTimeMillis());
+        habilidades.add(habilidad);
+        habilidades.add(habilidad2);
+        habilidades.add(habilidad3);
+        habilidades.add(habilidad4);
+        habilidades.add(habilidad5);
+        habilidades.add(habilidad6);
+        habilidades.add(habilidad7);
+        habilidades.add(habilidad8);
+        habilidades.add(habilidad9);
+        habilidades.add(habilidad10);
+        habilidades.add(habilidad11);
+        habilidades.add(habilidad12);
+        habilidades.add(habilidad13);
+        habilidades.add(habilidad14);
+        habilidades.add(habilidad15);
+        habilidades.add(habilidad16);
+        habilidades.add(habilidad17);
+        habilidades.add(habilidad18);
+        habilidades.add(habilidad19);
+        habilidades.add(habilidad20);
+        habilidades.add(habilidad21);
+        habilidades.add(habilidad22);
+
+        tiposPokemon= new ArrayList<>(Arrays.asList("agua","electrico","tierra",
+                "planta","fuego","hielo","acero","roca","lucha","psiquico","siniestro",
+                "fantasma","bicho","veneno","volador","dragon"));
+
 
     }
 
     @Override
     public void tiempoJugado(long tiempoInicial, long tiempoFinal) {
-        System.out.println("Llevas: " + (tiempoInicial - tiempoFinal));
+        System.out.println("Llevas: " + (tiempoInicial - tiempoFinal/1000)+" segundos Jugando");
 
     }
 
@@ -113,15 +146,30 @@ public class Main implements  UtilInterface {
 
     @Override
     public Pokemon crearPokemonAleatorio() {
-        return null;
+        Random random = new Random();
+        int numTipo =random.nextInt(0,tiposPokemon.size());
+        String tipo= tiposPokemon.get(numTipo);
+        int tamNombre = nombresAleatorios(tipo).length;
+        int nombre = random.nextInt(0,tamNombre);
+        String nombreFinal=nombresAleatorios(tipo)[nombre];
+        int hp = random.nextInt(12,200);
+        boolean legendario =random.nextBoolean();
+        String [] debilYFuerteAleatorio= debilYFuerteAleatorio(tipo);
+        int fuerza= random.nextInt(18,250);
+        int velocidad=random.nextInt(18,250);
+        int nivel= random.nextInt(1,100);
+        int numHabilidad = random.nextInt(0,habilidades.size());
+        char genero= random.nextInt(0,10)<5 ? 'f' : 'm';
+        return new Pokemon(nombreFinal,nivel,genero,tipo,habilidad,hp,legendario,
+                debilYFuerteAleatorio[0],debilYFuerteAleatorio[1],fuerza,velocidad);
     }
 
     @Override
     public <T> T sacarAleatorio(ArrayList<T> arrayList) {
-        return null;
+        Random random = new Random();
+        int indice = random.nextInt(0,arrayList.size()-1);
+        return arrayList.get(indice);
     }
-
-
     @Override
     public String[] debilYFuerteAleatorio(String tipo) {
         String[] BancoDF = new String[2];
@@ -195,9 +243,7 @@ public class Main implements  UtilInterface {
                 BancoDF[1] = "fantasma";
                 break;
         }
-
-        return new String[0];
-
+        return BancoDF;
     }
 
     @Override
@@ -207,14 +253,14 @@ public class Main implements  UtilInterface {
             case "agua":
                 BancoNombres[0] = "Blastoise";
                 BancoNombres[1] = "Gyarados";
-                BancoNombres[2] = "Seaking";
+                BancoNombres[2] = "Greninja";
                 BancoNombres[3] = "Manaphy";
                 break;
             case "electrico":
                 BancoNombres[0] = "Pikachu";
-                BancoNombres[1] = "Raichu";
-                BancoNombres[2] = "Magneton";
-                BancoNombres[3] = "Zapdos";
+                BancoNombres[1] = "Emolga";
+                BancoNombres[2] = "Togedemaru";
+                BancoNombres[3] = "Pachirizu";
                 break;
             case "tierra":
                 BancoNombres[0] = "Excadrill";
@@ -226,7 +272,7 @@ public class Main implements  UtilInterface {
                 BancoNombres[0] = "Lapras";
                 BancoNombres[1] = "Abomasnow";
                 BancoNombres[2] = "Glaseon";
-                BancoNombres[3] = "Vanilluxe";
+                BancoNombres[3] = "Aurorus";
                 break;
             case "fuego":
                 BancoNombres[0] = "Camelupt";
@@ -250,28 +296,28 @@ public class Main implements  UtilInterface {
                 BancoNombres[0] = "Machoke";
                 BancoNombres[1] = "Hitmonlee";
                 BancoNombres[2] = "Hitmontop";
-                BancoNombres[3] = "Hitmonchan";
+                BancoNombres[3] = "Hawlucha";
                 break;
             case "psiquico":
                 BancoNombres[0] = "Gardevoir";
                 BancoNombres[1] = "Golduck";
                 BancoNombres[2] = "Gothitelle";
-                BancoNombres[3] = "Alakazam";
+                BancoNombres[3] = "Hatterene";
                 break;
             case "siniestro":
                 BancoNombres[0] = "Zoroark";
                 BancoNombres[1] = "Umbreon";
-                BancoNombres[2] = "Migthyena";
-                BancoNombres[3] = "Absol";
+                BancoNombres[2] = "Absol";
+                BancoNombres[3] = "Darkrai";
                 break;
             case "fanstasma":
-                BancoNombres[0] = "Dusclops";
+                BancoNombres[0] = "Mimikiu";
                 BancoNombres[1] = "Misdreavus";
                 BancoNombres[2] = "Cofagrigus";
                 BancoNombres[3] = "Banette";
                 break;
             case "planta":
-                BancoNombres[0] = "Meganium";
+                BancoNombres[0] = "Chikorita";
                 BancoNombres[1] = "Serperior";
                 BancoNombres[2] = "Lilligant";
                 BancoNombres[3] = "Lurantis";
@@ -306,11 +352,8 @@ public class Main implements  UtilInterface {
                 BancoNombres[2] = "Tauros";
                 BancoNombres[3] = "Lopunny";
                 break;
-
         }
-
-
-        return new String[0];
+        return BancoNombres;
     }
 }
 //static no necesitas llamar objetos

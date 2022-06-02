@@ -13,9 +13,8 @@ private String fuerteContra;
     private int fuerza;
     private int velocidad;
     int turno=0, aumento, dis,MicalcAtqB,CPUcalcAtqB,CPUcalcAtq,calcAtq,MiAtq,CPUatq;
-    public Pokemon(String nombre, int nivel, char genero, String nombre1, String tipo, Habilidad habilidad, int HP, boolean esLegendario, String debilContra, String fuerteContra, int fuerza, int velocidad) {
+    public Pokemon(String nombre, int nivel, char genero, String tipo, Habilidad habilidad, int HP, boolean esLegendario, String debilContra, String fuerteContra, int fuerza, int velocidad) {
         super(nombre, nivel, genero);
-        this.nombre = nombre1;
         this.tipo = tipo;
         this.habilidad = habilidad;
         this.HP = HP;
