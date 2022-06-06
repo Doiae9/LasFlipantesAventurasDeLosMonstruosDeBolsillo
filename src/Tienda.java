@@ -37,26 +37,32 @@ public class Tienda {
 
         //validar que hay suficientes objetos del tipo requerido
         //ToDo Excepcion
-        if(indiceObjeto>objetosDisponibles.size()){
-            System.out.println("Lo siento, no tenemos el objeto que esta pidiendo");
-            return false;
-        }else {
-            if (objetosDisponibles.get(indiceObjeto).cantidad >= cantidad){
-                double precioTotal = cantidad*objetosDisponibles.get(indiceObjeto).costo;
-                if(precioTotal>= dinero){
-                    System.out.println("Gracias por su compra");
-                    System.out.println("Compraste"+cantidad+" "+objetosDisponibles.get(indiceObjeto).nombre+"por $"+precioTotal);
-                    System.out.println("Te quedan :"+(precioTotal-dinero));
-                    return true;
-                }else{
-                    System.out.println("No te alcanza, te faltan:= " +(precioTotal- dinero)); //Su cambio es :
+        try {
+            if (indiceObjeto > objetosDisponibles.size()) {
+                System.out.println("Lo siento, no tenemos el objeto que esta pidiendo");
+                return false;
+            } else {
+                if (objetosDisponibles.get(indiceObjeto).cantidad >= cantidad) {
+                    double precioTotal = cantidad * objetosDisponibles.get(indiceObjeto).costo;
+                    if (precioTotal >= dinero) {
+                        System.out.println("Gracias por su compra");
+                        System.out.println("Compraste" + cantidad + " " + objetosDisponibles.get(indiceObjeto).nombre + "por $" + precioTotal);
+                        System.out.println("Te quedan :" + (precioTotal - dinero));
+                        return true;
+                    } else {
+                        System.out.println("No te alcanza, te faltan:= " + (precioTotal - dinero)); //Su cambio es :
+                        return false;
+                    }
+                } else {
+                    System.out.println("No tenemos la cantidad solicitada");
                     return false;
                 }
-            }else{
-                System.out.println("No tenemos la cantidad solicitada");
-                return false;
             }
+        }catch(IndexOutOfBoundsException e){
+            System.out.println("El objeto indicado no existe");
+            return false;
         }
+
         //Si hay cantidad y Objeto
         //Si hay cantidad y existe en el arreglo
         //Si si tengo, validar que el dinero sea suficiente
@@ -67,7 +73,6 @@ public class Tienda {
         //hacemos excepción de que no hay la cantidad que pide
         //repetimos pregunta
         //
-
 
     }
 
