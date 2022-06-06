@@ -103,6 +103,7 @@ public class Entrenador extends Personaje {
     //Crear un menú
     public boolean tirarObjeto(int res) {
         Scanner leer = new Scanner(System.in);
+        try{
             System.out.println("Que deseas tirar?");
             for (int i = 0; i < mochila.size(); i++) {
                 System.out.println(1+i +"-" + mochila.get(i).getNombre());
@@ -111,11 +112,16 @@ public class Entrenador extends Personaje {
             if (res>mochila.size()-1) {
                 System.out.println("Que raro, este objeto no esta en la mochila...");
                 return false;
-            }else{
-                System.out.println("Tiraste"+mochila.get(res-1).getNombre());
+            }else {
+                System.out.println("Tiraste" + mochila.get(res - 1).getNombre());
                 mochila.remove(res - 1);
+            }
+            } catch(IndexOutOfBoundsException e){
+            System.out.println("El objeto indicado no existe" );
+            return false;
+            }
         return true;
-    }}
+    }
 
     //Todo probar metodo
     public boolean intercambiar(ArrayList<Pokemon> pokedexCPU) {
