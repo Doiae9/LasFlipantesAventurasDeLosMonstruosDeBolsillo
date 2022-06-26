@@ -75,10 +75,11 @@ public class Main implements  UtilInterface {
             "Arroja un acido nocivo que es corrosivo",70);
     static ArrayList<String> tiposPokemon;
 
+    static Main objetomain= new Main();
     public static void main(String[] args) throws InterruptedException {
         System.out.println();
        Thread.sleep(1500);
-        Main objetomain= new Main();
+
         long tiempoInicial = 0;
         objetomain.tiempoJugado(tiempoInicial,System.currentTimeMillis());
         System.out.println(objetomain.crearPokemonAleatorio());
@@ -128,19 +129,17 @@ public class Main implements  UtilInterface {
         System.out.println("2-. Entrar a la tienda");
         System.out.println("3-. Tirar objeto");
         System.out.println("4-. ");
-        int Esc;
-        Esc = leer.nextInt();
-        switch (Esc) {
-            case 1:
-                break;
-            case 2:
-                break;
-                case 3:
-                    break;
-                    case 4:
-                        break;
-
-
+        Random random = new Random();
+        int respuesta=1;
+        int prob;
+       while(respuesta !=0){
+        objetomain.mostrarMenu();
+        respuesta = leer.nextInt();
+        if(respuesta==1){
+            prob= random.nextInt(100);
+            System.out.println("Explorando...");
+            if();
+        }
         }
     }
 
